@@ -3,9 +3,9 @@
     <List class="m-nav" @renderNote="renderNote" :list="list"></List>
     <!--<router-view class="m-con" title="1"></router-view>-->
     <div class="m-doc">
-      <Toolbar></Toolbar>
-      <EditItem @addNote="addNote"></EditItem>
-      <Panel class="m-con" :item="item"></Panel>
+      <Toolbar @addNewNote="addNewNote"></Toolbar>
+      <EditItem @addNote="addNote" v-if="editShow"></EditItem>
+      <Panel class="m-con" :item="item" v-else></Panel>
     </div>
   </div>
 </template>
@@ -62,13 +62,15 @@ export default {
           'content': '今天天气很凉快，才38℃，万里无云。4'
         }
       ],
-      item: null
+      item: null,
+      editShow: true
     }
   },
   methods: {
     renderNote: function (item) {
       console.log(item)
       this.item = item
+      this.editShow = false
     },
     addNote: function (data) {
       console.log(data)
@@ -76,6 +78,9 @@ export default {
       data.summary = data.content
       console.log(data)
       this.list = [...this.list, data]
+    },
+    addNewNote: function () {
+      this.editShow = true
     }
   }
 }
