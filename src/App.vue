@@ -1,9 +1,9 @@
 <template>
   <div id="app">
+    <Toolbar class="m-toolbar" @addNewNote="addNewNote"></Toolbar>    
     <List class="m-nav" @renderNote="renderNote" :list="list"></List>
     <!--<router-view class="m-con" title="1"></router-view>-->
     <div class="m-doc">
-      <Toolbar @addNewNote="addNewNote"></Toolbar>
       <EditItem @addNote="addNote" v-if="editShow"></EditItem>
       <Panel class="m-con" :item="item" v-else></Panel>
     </div>
@@ -63,7 +63,7 @@ export default {
         }
       ],
       item: null,
-      editShow: true
+      editShow: false
     }
   },
   methods: {
@@ -94,12 +94,17 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.m-nav {
+.m-toolbar {
   position: absolute;
   left: 0;
   top: 0;
 }
+.m-nav {
+  position: absolute;
+  left: 73px;
+  top: 0;
+}
 .m-doc {
-  margin-left: 320px;
+  margin-left: 400px;
 }
 </style>
