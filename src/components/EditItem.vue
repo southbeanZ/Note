@@ -1,17 +1,18 @@
-<<template>
-  <form class="m-item">
-    <a href="javascript:;" class="btn btn-add" @click="addNote">添加</a>
-    <!--<input type="submit" value="清空" class="btn btn-clear">-->
-    <!-- <label for="title">标题</label> -->
-    <input type="text" name="title" class="u-title J_title" placeholder="写下笔记标题">
-    <!--<label for="time">时间</label>-->
-    <!--<input type="date" name="time" class="J_time"><br>-->
-    <!-- <label for="content">内容</label> -->
-    <textarea name="content" class="u-content J_content" placeholder="在这里输入正文"></textarea><br>
-  </form>
+<template>
+  <div>
+    <EditBar @addNote="addNote"></EditBar>
+    <form class="m-item">
+      <input type="text" name="title" class="u-title J_title" placeholder="写下笔记标题">
+      <textarea name="content" class="u-content J_content" placeholder="在这里输入正文"></textarea><br>
+    </form>
+  </div>
 </template>
 <script>
+import EditBar from '@/components/EditBar.vue'
 export default {
+  components: {
+    EditBar
+  },
   methods: {
     addNote: function () {
       let data = {},
@@ -35,14 +36,16 @@ export default {
   text-align: left;
   box-sizing: border-box;
   width: 100%;
-  padding: 20px;
+  margin: 20px 0;
+  padding: 0 20px;
   .u-title {
     display: block;
     width: 100%;
     height: 40px;
-    margin: 10px 0;
+    padding: 10px 0;
     font-size: 28px;
     color: #2dbe60;
+    border-top: 1px solid #ececec;
     &::-webkit-input-placeholder {
       font-size: 28px;
       color: #2dbe60;

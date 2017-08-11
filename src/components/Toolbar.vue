@@ -6,7 +6,7 @@
       <a href="javascript:;" class="btn btn-search"></a>  
     </div>
     <div class="u-btngroup">
-      <a href="javascript:;" class="btn btn-start"></a>
+      <a href="javascript:;" class="btn btn-star"></a>
       <a href="javascript:;" class="btn btn-note"></a>
       <a href="javascript:;" class="btn btn-book"></a>
       <a href="javascript:;" class="btn btn-tag"></a>
@@ -70,8 +70,8 @@ export default {
       &.btn-search {
         background-image: url(../assets/imgs/search.png)
       }
-      &.btn-start {
-        background-image: url(../assets/imgs/start.png)
+      &.btn-star {
+        background-image: url(../assets/imgs/star.png)
       }
       &.btn-note {
         background-image: url(../assets/imgs/note.png)
@@ -89,8 +89,8 @@ export default {
         &.btn-search {
           background-image: url(../assets/imgs/search_active.png)
         }
-        &.btn-start {
-          background-image: url(../assets/imgs/start_active.png)
+        &.btn-star {
+          background-image: url(../assets/imgs/star_active.png)
         }
         &.btn-note {
           background-image: url(../assets/imgs/note_active.png)

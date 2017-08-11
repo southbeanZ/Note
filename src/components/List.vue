@@ -1,5 +1,7 @@
 <template>
   <div class="m-list">
+    <p class="u-title">笔记</p>
+    <p class="u-num">{{list.length}}条笔记</p>
     <ul>
       <li class="m-item" v-for="item in list" :key="item.id" @click="renderNote(item.id)" :class="{'active': activeIndex === item.id}">
         <NoteItem :item="item"></NoteItem>
@@ -45,6 +47,22 @@ export default {
   border-right: 1px solid #ececec;
   overflow-y: auto;
   overflow-x: hidden;
+  text-align: left;
+  .u-title {
+    color: #878787;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 21px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 20px 0 20px 10px;
+  }
+  .u-num {
+    font-size: 13px;
+    font-weight: 400;
+    color: #ababab;
+    padding: 0 0 5px 10px;
+  }
 }
 .m-item {
   box-sizing: border-box;
@@ -54,31 +72,6 @@ export default {
     border: 3px solid #ececec;
     .u-link {
       border: none;
-    }
-  }
-  .u-link {
-    display: block;
-    box-sizing: border-box;
-    padding: 10px;
-    height: 100%;
-    border-bottom: 1px solid #ececec;
-    &:hover {
-      background: #40bc6c;
-    }
-    .title {
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .time {
-      font-size: 10px;
-      padding: 5px 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .summary {
-      font-size: 12px;
-      overflow: hidden;
     }
   }
 }
