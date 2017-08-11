@@ -42,7 +42,7 @@ export default {
 .m-list {
   height: 100%;
   width: 300px;
-  border-right: 1px solid #aaa;
+  border-right: 1px solid #ececec;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -51,7 +51,7 @@ export default {
   text-align: left;
   height: 110px;
   &.active {
-    border: 3px solid #aaa;
+    border: 3px solid #ececec;
     .u-link {
       border: none;
     }
@@ -61,7 +61,7 @@ export default {
     box-sizing: border-box;
     padding: 10px;
     height: 100%;
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid #ececec;
     &:hover {
       background: #40bc6c;
     }
