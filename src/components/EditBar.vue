@@ -2,7 +2,7 @@
   <div class="m-editbar">
     <div class="u-btngroup u-btngroup-left">
       <a href="javascript:;" class="btn btn-star"></a>
-      <a href="javascript:;" class="btn btn-delete"></a>  
+      <a href="javascript:;" class="btn btn-delete" @click="deleteNote"></a>  
     </div>
     <div class="u-btngroup u-btngroup-right">
       <a href="javascript:;" class="btn btn-add" @click="addNote">添加</a>
@@ -14,6 +14,9 @@ export default {
   methods: {
     addNote: function () {
       this.$emit('addNote')
+    },
+    deleteNote: function () {
+      this.$emit('deleteNote')
     }
   }
 }

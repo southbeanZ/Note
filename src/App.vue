@@ -4,8 +4,8 @@
     <List class="m-nav" @renderNote="renderNote" :list="list"></List>
     <!--<router-view class="m-con" title="1"></router-view>-->
     <div class="m-doc">
-      <EditItem @addNote="addNote" v-if="editShow"></EditItem>
-      <Panel class="m-con" :item="item" v-else></Panel>
+      <EditItem @addNote="addNote" v-if="editShow" :data="item"></EditItem>
+      <!-- <Panel class="m-con" :item="item" v-else></Panel> -->
     </div>
   </div>
 </template>
@@ -70,7 +70,7 @@ export default {
     renderNote: function (item) {
       console.log(item)
       this.item = item
-      this.editShow = false
+      this.editShow = true
     },
     addNote: function (data) {
       console.log(data)
@@ -80,6 +80,10 @@ export default {
       this.list = [...this.list, data]
     },
     addNewNote: function () {
+      this.item = {
+        title: '',
+        content: ''
+      }
       this.editShow = true
     }
   }
