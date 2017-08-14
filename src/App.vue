@@ -4,7 +4,7 @@
     <List class="m-nav" @renderNote="renderNote" :list="list"></List>
     <!--<router-view class="m-con" title="1"></router-view>-->
     <div class="m-doc">
-      <EditItem @addNote="addNote" v-if="item" :data="item" :isEdit="isEdit"></EditItem>
+      <EditItem @addNote="addNote" @deleteNote="deleteNote" v-if="item" :data="item" :isEdit="isEdit"></EditItem>
       <!-- <Panel class="m-con" :item="item" v-else></Panel> -->
     </div>
   </div>
@@ -78,6 +78,10 @@ export default {
       data.summary = data.content
       console.log(data)
       this.list = [...this.list, data]
+    },
+    deleteNote: function (id) {
+      this.list.splice(id, 1)
+      this.item = null
     },
     addNewNote: function () {
       this.item = {
