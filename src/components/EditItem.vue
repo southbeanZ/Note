@@ -1,6 +1,6 @@
 <template>
   <div>
-    <EditBar @addNote="addNote" @deleteNote="deleteNote" :isEdit="isEdit"></EditBar>
+    <EditBar @updateNote="updateNote" @addNote="addNote" @deleteNote="deleteNote" :isEdit="isEdit"></EditBar>
     <form class="m-item">
       <input type="text" name="title" class="u-title J_title" placeholder="写下笔记标题" v-model="data.title">
       <textarea name="content" class="u-content J_content" placeholder="在这里输入正文" v-model="data.content"></textarea><br>
@@ -39,11 +39,17 @@ export default {
         data.title = _title
         data.content = _content
         data.time = new Date()
-        this.$emit('addNote', data)
+        // this.$emit('addNote', data)
+        this.$store.commit('ADD_NOTE', data)
       }
     },
     deleteNote: function () {
-        this.$emit('deleteNote', this.data.id)
+        // this.$emit('deleteNote', this.data.id)
+      this.$store.commit('DELETE_NOTE', this.data.id)
+    },
+    updateNote: function () {
+      console.log(this.data)
+      this.$store.commit('UPDATE_NOTE', this.data)
     }
   }
 }

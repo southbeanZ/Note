@@ -5,13 +5,6 @@
     <ul>
       <li class="m-item" v-for="item in list" :key="item.id" @click="renderNote(item.id)" :class="{'active': activeIndex === item.id}">
         <NoteItem :item="item"></NoteItem>
-        <!--<a href="javascript:;" class="u-link">
-          <div class="con">
-            <p class="title">{{item.title}}</p>
-            <p class="time">{{item.time}}</p>
-            <p class="summary">{{item.summary}}</p>
-          </div>
-        </a>-->
       </li>
     </ul>
   </div>
