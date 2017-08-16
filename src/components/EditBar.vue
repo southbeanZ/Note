@@ -5,7 +5,7 @@
       <a href="javascript:;" class="btn btn-delete" @click="deleteNote"></a>  
     </div>
     <div class="u-btngroup u-btngroup-right">
-      <a href="javascript:;" class="btn btn-add" @click="saveNote" v-if="isEdit">保存</a>
+      <a href="javascript:;" class="btn btn-add" @click="updatNote" v-if="isEdit">保存</a>
       <a href="javascript:;" class="btn btn-add" @click="addNote" v-else>添加</a>
     </div>
   </div>
@@ -17,8 +17,8 @@ export default {
     addNote: function () {
       this.$emit('addNote')
     },
-    saveNote: function () {
-      this.$emit('saveNote')
+    updatNote: function () {
+      this.$emit('updatNote')
     },
     deleteNote: function () {
       this.$emit('deleteNote')
