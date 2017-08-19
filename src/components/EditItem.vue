@@ -38,7 +38,7 @@ export default {
       } else {
         data.title = _title
         data.content = _content
-        data.time = new Date()
+        data.time = this.fDateFormater(new Date())
         // this.$emit('addNote', data)
         this.$store.commit('ADD_NOTE', data)
       }
@@ -53,6 +53,13 @@ export default {
     updateNote: function () {
       console.log(this.data)
       this.$store.commit('UPDATE_NOTE', this.data)
+    },
+    fDateFormater (date) {
+      let _year = date.getFullYear(),
+          _month = date.getMonth() + 1,
+          _date = date.getDate()
+      _month = _month < 10 ? '0' + _month : _month
+      return _year + '/' + _month + '/' + _date
     }
   }
 }
