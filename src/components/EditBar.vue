@@ -1,7 +1,7 @@
 <template>
   <div class="m-editbar">
     <div class="u-btngroup u-btngroup-left">
-      <a href="javascript:;" class="btn btn-star"></a>
+      <a href="javascript:;" class="btn btn-star" @click="starNote" :class="{active: isStar}"></a>
       <a href="javascript:;" class="btn btn-delete" @click="deleteNote"></a>  
     </div>
     <div class="u-btngroup u-btngroup-right">
@@ -12,10 +12,13 @@
 </template>
 <script>
 export default {
-  props: ['isEdit'],
+  props: ['isEdit', 'isStar'],
   methods: {
     addNote: function () {
       this.$emit('addNote')
+    },
+    starNote: function () {
+      this.$emit('starNote')
     },
     updatNote: function () {
       this.$emit('updatNote')

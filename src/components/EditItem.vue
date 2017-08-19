@@ -1,6 +1,6 @@
 <template>
   <div>
-    <EditBar @updateNote="updateNote" @addNote="addNote" @deleteNote="deleteNote" :isEdit="isEdit"></EditBar>
+    <EditBar @updateNote="updateNote" @addNote="addNote" @starNote="starNote" @deleteNote="deleteNote" :isEdit="isEdit" :isStar="data.star"></EditBar>
     <form class="m-item">
       <input type="text" name="title" class="u-title J_title" placeholder="写下笔记标题" v-model="data.title">
       <textarea name="content" class="u-content J_content" placeholder="在这里输入正文" v-model="data.content"></textarea><br>
@@ -46,6 +46,9 @@ export default {
     deleteNote: function () {
         // this.$emit('deleteNote', this.data.id)
       this.$store.commit('DELETE_NOTE', this.data.id)
+    },
+    starNote: function () {
+      this.$store.commit('STAR_NOTE', this.data.id)
     },
     updateNote: function () {
       console.log(this.data)
