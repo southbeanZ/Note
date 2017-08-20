@@ -1,4 +1,4 @@
-import { ADD_NOTE, DELETE_NOTE, UPDATE_NOTE, STAR_NOTE } from './mutation-types'
+import { ADD_NOTE, DELETE_NOTE, UPDATE_NOTE, STAR_NOTE, GET_NOTELIST } from './mutation-types'
 
 const mutations = {
   [ADD_NOTE] (state, data) {
@@ -19,6 +19,9 @@ const mutations = {
   },
   [STAR_NOTE] (state, id) {
     state.list[id].star = !state.list[id].star
+  },
+  [GET_NOTELIST] (state, data) {
+    state.list = data
   }
 }
 

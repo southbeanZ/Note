@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Toolbar class="m-toolbar" @addNewNote="addNewNote"></Toolbar>    
+    <Toolbar class="m-toolbar" @addNewNote="addNewNote" @getStarNote="getStarNote"></Toolbar>    
     <List class="m-nav" @renderNote="renderNote" :list="list"></List>
     <!--<router-view class="m-con" title="1"></router-view>-->
     <div class="m-doc">
@@ -45,7 +45,13 @@ export default {
         content: ''
       }
       this.isEdit = false
+    },
+    getStarNote: function () {
+      this.list = this.$store.getters.starNotes
     }
+  },
+  created () {
+    this.$store.dispatch('getNoteList')
   }
 }
 </script>

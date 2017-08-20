@@ -6,7 +6,7 @@
       <a href="javascript:;" class="btn btn-search"></a>  
     </div>
     <div class="u-btngroup">
-      <a href="javascript:;" class="btn btn-star"></a>
+      <a href="javascript:;" class="btn btn-star" @click="getStarNote"></a>
       <a href="javascript:;" class="btn btn-note"></a>
       <a href="javascript:;" class="btn btn-book"></a>
       <a href="javascript:;" class="btn btn-tag"></a>
@@ -21,6 +21,9 @@ export default {
   methods: {
     addNewNote: function () {
       this.$emit('addNewNote')
+    },
+    getStarNote: function () {
+      this.$emit('getStarNote')
     }
   }
 }
