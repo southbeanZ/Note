@@ -29,12 +29,13 @@ export default {
     padding: 10px;
     height: 100%;
     border-bottom: 1px solid #ececec;
+    color: #878787;
     &:hover {
       background: #40bc6c;
     }
     .title {
       font-size: 16px;
-      font-weight: bold;
+      color: #4a4a4a;
     }
     .time {
       font-size: 10px;

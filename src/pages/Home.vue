@@ -37,6 +37,7 @@ export default {
     renderNote: function (item) {
       console.log(item)
       this.item = item
+      // this.item = JSON.parse(JSON.stringify(item))
       this.isEdit = true
     },
     addNewNote: function () {
