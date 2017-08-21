@@ -28,7 +28,7 @@ export default {
     renderNote: function (id) {
       console.log(id)
       this.activeIndex = id
-      this.$emit('renderNote', this.list[id])
+      this.$emit('renderNote', id)
     }
   }
 }

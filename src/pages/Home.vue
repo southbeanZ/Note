@@ -34,10 +34,15 @@ export default {
     }
   },
   methods: {
-    renderNote: function (item) {
-      console.log(item)
-      this.item = item
-      // this.item = JSON.parse(JSON.stringify(item))
+    renderNote: function (id) {
+      // console.log(item)
+      // this.item = item
+      // // this.item = JSON.parse(JSON.stringify(item))
+      // this.isEdit = true
+      let index = this.list.findIndex((ele) => {
+        return +ele.id === id
+      })
+      this.item = this.list[index]
       this.isEdit = true
     },
     addNewNote: function () {

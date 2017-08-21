@@ -10,7 +10,11 @@ const mutations = {
     state.list = [...state.list, data]
   },
   [DELETE_NOTE] (state, id) {
-    state.list.splice(id, 1)
+    let index = state.list.findIndex((ele) => {
+      return +ele.id === id
+    })
+    console.log(index)
+    state.list.splice(index, 1)
     state.activeItem = null
   },
   [UPDATE_NOTE] (state, newData) {
