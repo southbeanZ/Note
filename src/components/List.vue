@@ -28,7 +28,11 @@ export default {
     renderNote: function (id) {
       console.log(id)
       this.activeIndex = id
-      this.$emit('renderNote', id)
+      // this.$emit('renderNote', id)
+      this.$store.commit('RENDER_NOTE', {
+        id: id,
+        isNew: false
+      })
     }
   }
 }

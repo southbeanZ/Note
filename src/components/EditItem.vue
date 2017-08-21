@@ -1,6 +1,6 @@
 <template>
   <div>
-    <EditBar @updateNote="updateNote" @addNote="addNote" @starNote="starNote" @deleteNote="deleteNote" :isEdit="isEdit" :isStar="data.star"></EditBar>
+    <EditBar @updateNote="updateNote" @addNote="addNote" @starNote="starNote" @deleteNote="deleteNote" :isNew="isNew" :isStar="data.star"></EditBar>
     <form class="m-item">
       <input type="text" name="title" class="u-title J_title" placeholder="写下笔记标题" v-model="data.title">
       <textarea name="content" class="u-content J_content" placeholder="在这里输入正文" v-model="data.content"></textarea><br>
@@ -20,8 +20,8 @@ export default {
       },
       type: Object
     },
-    isEdit: {
-      default: true,
+    isNew: {
+      default: false,
       type: Boolean
     }
   },

@@ -6,7 +6,9 @@ import actions from './actions'
 Vue.use(Vuex)
 
 const state = {
-  list: []
+  list: [],
+  activeItem: null,
+  isNew: false
 }
 
 let getters = {

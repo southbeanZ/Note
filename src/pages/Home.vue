@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Toolbar class="m-toolbar" @addNewNote="addNewNote" @getStarNote="getStarNote"></Toolbar>    
-    <List class="m-nav" @renderNote="renderNote" :list="list"></List>
+    <Toolbar class="m-toolbar" @getStarNote="getStarNote"></Toolbar>    
+    <List class="m-nav" :list="list"></List>
     <!--<router-view class="m-con" title="1"></router-view>-->
     <div class="m-doc">
-      <EditItem v-if="item" :data="item" :isEdit="isEdit"></EditItem>
+      <EditItem v-if="item" :data="item" :isNew="isNew"></EditItem>
       <!-- <Panel class="m-con" :item="item" v-else></Panel> -->
     </div>
   </div>
@@ -24,34 +24,42 @@ export default {
   },
   data () {
     return {
-      item: null,
-      isEdit: true
+      // item: null,
+      // isNew: true
     }
   },
   computed: {
     list () {
       return this.$store.state.list
+    },
+    item () {
+      return this.$store.state.activeItem
+    },
+    isNew () {
+      console.log(this.$store.state.isNew)
+      return this.$store.state.isNew
     }
   },
   methods: {
-    renderNote: function (id) {
-      // console.log(item)
-      // this.item = item
-      // // this.item = JSON.parse(JSON.stringify(item))
-      // this.isEdit = true
-      let index = this.list.findIndex((ele) => {
-        return +ele.id === id
-      })
-      this.item = this.list[index]
-      this.isEdit = true
-    },
-    addNewNote: function () {
-      this.item = {
-        title: '',
-        content: ''
-      }
-      this.isEdit = false
-    },
+    // renderNote: function (id) {
+    //   // console.log(item)
+    //   // this.item = item
+    //   // // this.item = JSON.parse(JSON.stringify(item))
+    //   // this.isNew = true
+    //   let index = this.list.findIndex((ele) => {
+    //     return +ele.id === id
+    //   })
+    //   let data = this.list[index]
+    //   this.$store.commit('RENDER_NOTE', data)
+    //   this.isNew = true
+    // },
+    // addNewNote: function () {
+    //   // this.item = {
+    //   //   title: '',
+    //   //   content: ''
+    //   // }
+    //   this.isNew = false
+    // },
     getStarNote: function () {
       this.list = this.$store.getters.starNotes
     }
