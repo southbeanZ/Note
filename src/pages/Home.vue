@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Toolbar class="m-toolbar" @getStarNote="getStarNote"></Toolbar>    
+    <Toolbar class="m-toolbar"></Toolbar>    
     <List class="m-nav" :list="list"></List>
     <!--<router-view class="m-con" title="1"></router-view>-->
     <div class="m-doc">
@@ -30,13 +30,15 @@ export default {
   },
   computed: {
     list () {
-      return this.$store.state.list
+      return this.$store.getters.starNotes
     },
+    // list () {
+    //   return this.$store.state.list
+    // },
     item () {
       return this.$store.state.activeItem
     },
     isNew () {
-      console.log(this.$store.state.isNew)
       return this.$store.state.isNew
     }
   },
@@ -60,9 +62,6 @@ export default {
     //   // }
     //   this.isNew = false
     // },
-    getStarNote: function () {
-      this.list = this.$store.getters.starNotes
-    }
   },
   created () {
     this.$store.dispatch('getNoteList')

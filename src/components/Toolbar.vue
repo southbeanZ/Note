@@ -28,7 +28,7 @@ export default {
       })
     },
     getStarNote: function () {
-      this.$emit('getStarNote')
+      this.$store.commit('GET_STAR')
     }
   }
 }

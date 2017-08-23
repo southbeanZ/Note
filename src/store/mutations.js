@@ -1,4 +1,4 @@
-import { RENDER_NOTE, ADD_NOTE, DELETE_NOTE, UPDATE_NOTE, STAR_NOTE, GET_NOTELIST } from './mutation-types'
+import { RENDER_NOTE, ADD_NOTE, DELETE_NOTE, UPDATE_NOTE, STAR_NOTE, GET_NOTELIST, GET_STAR } from './mutation-types'
 
 function getIndex (list, id) {
   return list.findIndex((ele) => {
@@ -45,6 +45,11 @@ const mutations = {
   },
   [GET_NOTELIST] (state, data) {
     state.list = data
+  },
+  [GET_STAR] (state, data) {
+    state.showStar = !state.showStar
+    // state = {...state, showStar: !state.showStar}
+    // console.log(state)
   }
 }
 

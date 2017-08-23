@@ -8,12 +8,18 @@ Vue.use(Vuex)
 const state = {
   list: [],
   activeItem: null,
-  isNew: false
+  isNew: false,
+  showStar: false
 }
 
 let getters = {
   starNotes: (state) => {
-    return state.list.filter(item => item.star)
+    console.log(state)
+    if (state.showStar) {
+      return state.list.filter(item => item.star)
+    } else {
+      return state.list
+    }
   }
 }
 
