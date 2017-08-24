@@ -6,7 +6,7 @@
       <a href="javascript:;" class="btn btn-search"></a>  
     </div>
     <div class="u-btngroup">
-      <a href="javascript:;" class="btn btn-star" @click="getStarNote"></a>
+      <a href="javascript:;" class="btn btn-star" @click="getStarNote" :class="{active: isStar}"></a>
       <a href="javascript:;" class="btn btn-note"></a>
       <a href="javascript:;" class="btn btn-book"></a>
       <a href="javascript:;" class="btn btn-tag"></a>
@@ -18,6 +18,11 @@
 </template>
 <script>
 export default {
+  computed: {
+    isStar: function () {
+      return this.$store.state.showStar
+    }
+  },
   methods: {
     addNewNote: function () {
       // this.$emit('addNewNote')

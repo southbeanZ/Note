@@ -7,13 +7,13 @@
     <div class="u-btngroup u-btngroup-right">
       <!-- <a href="javascript:;" class="btn btn-add" @click="updatNote" v-if="isEdit">保存</a> -->
       <!-- <a href="javascript:;" class="btn btn-add" @click="addNote" v-else>添加</a> -->
-      <a href="javascript:;" class="btn btn-add" @click="addNote" v-if="!isEdit">添加</a>
+      <a href="javascript:;" class="btn btn-add" @click="addNote" v-if="isNew">添加</a>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ['isEdit', 'isStar'],
+  props: ['isNew', 'isStar'],
   methods: {
     addNote: function () {
       this.$emit('addNote')
