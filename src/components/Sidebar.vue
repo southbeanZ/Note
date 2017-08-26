@@ -25,8 +25,6 @@ export default {
   },
   methods: {
     addNewNote: function () {
-      // this.$emit('addNewNote')
-      // this.$store.commit('RENDER_NOTE', -1, true)
       this.$store.commit('RENDER_NOTE', {
         id: -1,
         isNew: true

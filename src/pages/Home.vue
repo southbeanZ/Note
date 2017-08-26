@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Toolbar class="m-toolbar"></Toolbar>    
-    <List class="m-nav" :list="list"></List>
+    <Sidebar class="m-sidebar"></Sidebar>    
+    <NoteList class="m-nav" :list="list"></NoteList>
     <!--<router-view class="m-con" title="1"></router-view>-->
     <div class="m-doc">
       <EditItem v-if="item" :data="item" :isNew="isNew"></EditItem>
@@ -10,16 +10,14 @@
   </div>
 </template>
 <script>
-import List from '@/components/List'
-import Panel from '@/components/Panel'
-import Toolbar from '@/components/Toolbar'
+import NoteList from '@/components/NoteList'
+import Sidebar from '@/components/Sidebar'
 import EditItem from '@/components/EditItem'
 
 export default {
   components: {
-    List,
-    Panel,
-    Toolbar,
+    NoteList,
+    Sidebar,
     EditItem
   },
   data () {
@@ -69,7 +67,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.m-toolbar {
+.m-sidebar {
   position: absolute;
   left: 0;
   top: 0;

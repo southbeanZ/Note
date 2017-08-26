@@ -2,11 +2,31 @@
   <div class="m-taglist">
     <a href="javascript:;" class="u-icon"></a>
     <span class="u-tag" :key="id" v-for="(item, id) in list">{{item.name}}</span>
+    <input id="J_ip_tag" type="text" class="u-tag" v-model="newTag" placeholder="+" @blur="checkTag" @change="changeHandler">
   </div>
 </template>
 <script>
 export default {
-  props: ['list']
+  props: ['list'],
+  data () {
+    return {
+      newTag: ''
+    }
+  },
+  methods: {
+    checkTag: function () {
+      if (this.newTag !== '') {
+        this.$store.commit('ADD_TAG', this.newTag)
+        this.newTag = ''
+      }
+    },
+    changeHandler: function () {
+      let len = this.newTag.lenghth,
+          ipTag = document.getElementById('J_ip_tag')
+          console.log(len)
+      ipTag.style.width = len * 12 + 'px'
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -32,6 +52,9 @@ export default {
     font-size: 12px;
     line-height: 17px;
     margin: 0 2px;
+  }
+  input {
+    width: 10px;
   }
 }
 </style>
