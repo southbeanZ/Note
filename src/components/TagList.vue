@@ -2,7 +2,7 @@
   <div class="m-taglist">
     <a href="javascript:;" class="u-icon"></a>
     <span class="u-tag" :key="id" v-for="(item, id) in list">{{item.name}}</span>
-    <input id="J_ip_tag" type="text" class="u-tag" v-model="newTag" placeholder="+" @blur="checkTag" @change="changeHandler">
+    <input id="J_ip_tag" type="text" class="u-tag" v-model="newTag" placeholder="+" @blur="checkTag" @input="changeHandler">
   </div>
 </template>
 <script>
@@ -18,12 +18,13 @@ export default {
       if (this.newTag !== '') {
         this.$store.commit('ADD_TAG', this.newTag)
         this.newTag = ''
+        let ipTag = document.getElementById('J_ip_tag')
+        ipTag.style.width = '10px'
       }
     },
     changeHandler: function () {
-      let len = this.newTag.lenghth,
+      let len = this.newTag.split('').length,
           ipTag = document.getElementById('J_ip_tag')
-          console.log(len)
       ipTag.style.width = len * 12 + 'px'
     }
   }
