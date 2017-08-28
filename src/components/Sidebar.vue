@@ -3,13 +3,13 @@
     <img src="../assets/imgs/logo.png" alt="Note" class="u-logo">
     <div class="u-btngroup">
       <a href="javascript:;" class="btn btn-add" @click="addNewNote"></a>
-      <a href="javascript:;" class="btn btn-search"></a>  
+      <router-link class="btn btn-search" to="/search"></router-link>
     </div>
     <div class="u-btngroup">
       <a href="javascript:;" class="btn btn-star" @click="getStarNote" :class="{active: isStar}"></a>
       <a href="javascript:;" class="btn btn-note"></a>
       <a href="javascript:;" class="btn btn-book"></a>
-      <a href="javascript:;" class="btn btn-tag"></a>
+      <a href="javascript:;" class="btn btn-tag" @click="toggleTagList"></a>
     </div>
     <div class="u-avatar">
       <img src="../assets/imgs/avatar.png" alt="Ice" class="pic">
@@ -32,6 +32,8 @@ export default {
     },
     getStarNote: function () {
       this.$store.commit('GET_STAR')
+    },
+    toggleTagList: function () {
     }
   }
 }

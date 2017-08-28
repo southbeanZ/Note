@@ -1,6 +1,7 @@
 <template>
   <div>
     <NoteList class="m-nav" :list="list"></NoteList>
+    <!-- <CoverList class="m-nav" :list="list"></CoverList> -->
     <div class="m-doc">
       <EditItem v-if="item" :data="item" :isNew="isNew"></EditItem>
     </div>
@@ -8,12 +9,14 @@
 </template>
 <script>
 import NoteList from '@/components/NoteList'
+import CoverList from '@/components/CoverList'
 import Sidebar from '@/components/Sidebar'
 import EditItem from '@/components/EditItem'
 
 export default {
   components: {
     NoteList,
+    CoverList,
     Sidebar,
     EditItem
   },
@@ -47,7 +50,8 @@ export default {
 <style lang="scss" scoped>
 .m-nav {
   position: absolute;
-  left: 73px;
+  // left: 73px;
+  left: 0;
   top: 0;
 }
 .m-doc {

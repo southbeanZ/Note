@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="g-bd">
     <Sidebar class="m-sidebar"></Sidebar>
-    <router-view></router-view>
+    <router-view class="m-content"></router-view>
     <!-- <NoteList class="m-nav" :list="list"></NoteList>
     <div class="m-doc">
       <EditItem v-if="item" :data="item" :isNew="isNew"></EditItem>
@@ -66,10 +66,18 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.g-bd {
+  height: 100%;
+}
 .m-sidebar {
   position: absolute;
   left: 0;
   top: 0;
+}
+.m-content {
+  position: relative;
+  margin-left: 73px;
+  height: 100%;
 }
 .m-nav {
   position: absolute;
