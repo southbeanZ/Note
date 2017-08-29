@@ -7,7 +7,7 @@
     </div>
     <div class="u-btngroup">
       <a href="javascript:;" class="btn btn-star" @click="getStarNote" :class="{active: isStar}"></a>
-      <a href="javascript:;" class="btn btn-note"></a>
+      <a href="javascript:;" class="btn btn-note" @click="showNoteList"></a>
       <a href="javascript:;" class="btn btn-book"></a>
       <a href="javascript:;" class="btn btn-tag" @click="toggleTagList"></a>
     </div>
@@ -34,6 +34,10 @@ export default {
       this.$store.commit('GET_STAR')
     },
     toggleTagList: function () {
+      this.$store.commit('SHOW_TAG_LIST')
+    },
+    showNoteList: function () {
+      this.$store.commit('SHOW_NOTE_LIST')
     }
   }
 }

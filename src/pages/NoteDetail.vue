@@ -1,7 +1,7 @@
 <template>
   <div>
-    <NoteList class="m-nav" :list="list"></NoteList>
-    <!-- <CoverList class="m-nav" :list="list"></CoverList> -->
+    <NoteList class="m-nav" :list="list" v-if="showNoteList"></NoteList>
+    <CoverList class="m-nav" :list="list" v-else></CoverList>
     <div class="m-doc">
       <EditItem v-if="item" :data="item" :isNew="isNew"></EditItem>
     </div>
@@ -38,6 +38,9 @@ export default {
     },
     isNew () {
       return this.$store.state.isNew
+    },
+    showNoteList () {
+      return this.$store.state.showNoteList
     }
   },
   methods: {

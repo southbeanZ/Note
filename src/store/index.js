@@ -9,7 +9,8 @@ const state = {
   list: [],
   activeItem: null,
   isNew: false,
-  showStar: false
+  showStar: false,
+  showNoteList: true
 }
 
 let getters = {
