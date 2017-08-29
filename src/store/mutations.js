@@ -1,4 +1,4 @@
-import { RENDER_NOTE, ADD_NOTE, DELETE_NOTE, UPDATE_NOTE, STAR_NOTE, GET_NOTELIST, GET_STAR, ADD_TAG, SHOW_TAG_LIST, SHOW_NOTE_LIST } from './mutation-types'
+import * as types from './mutation-types'
 
 function getIndex (list, id) {
   return list.findIndex((ele) => {
@@ -7,7 +7,7 @@ function getIndex (list, id) {
 }
 
 const mutations = {
-  [RENDER_NOTE] (state, data) {
+  [types.RENDER_NOTE] (state, data) {
     if (data.isNew) {
       state.activeItem = {
         title: '',
@@ -19,7 +19,7 @@ const mutations = {
     }
     state.isNew = data.isNew
   },
-  [ADD_NOTE] (state, data) {
+  [types.ADD_NOTE] (state, data) {
     console.log(data)
     data.id = state.list[state.list.length - 1].id + 1
     data.summary = data.content
@@ -27,7 +27,7 @@ const mutations = {
     console.log(data)
     state.list = [...state.list, data]
   },
-  [DELETE_NOTE] (state, id) {
+  [types.DELETE_NOTE] (state, id) {
     // let index = state.list.findIndex((ele) => {
     //   return +ele.id === id
     // })
@@ -35,32 +35,32 @@ const mutations = {
     state.list.splice(getIndex(state.list, id), 1)
     state.activeItem = null
   },
-  [UPDATE_NOTE] (state, newData) {
+  [types.UPDATE_NOTE] (state, newData) {
     let _id = newData.id
     state.list[_id] = newData
   },
-  [STAR_NOTE] (state, id) {
+  [types.STAR_NOTE] (state, id) {
     let index = getIndex(state.list, id)
     state.list[index].star = !state.list[index].star
   },
-  [GET_NOTELIST] (state, data) {
+  [types.GET_NOTELIST] (state, data) {
     state.list = data
   },
-  [GET_STAR] (state, data) {
+  [types.GET_STAR] (state, data) {
     state.showStar = !state.showStar
     // state = {...state, showStar: !state.showStar}
     // console.log(state)
   },
-  [ADD_TAG] (state, data) {
+  [types.ADD_TAG] (state, data) {
     let index = getIndex(state.list, state.activeItem.id)
     state.list[index].tagList.push({
       'name': data
     })
   },
-  [SHOW_TAG_LIST] (state) {
+  [types.SHOW_TAG_LIST] (state) {
     state.showNoteList = !state.showNoteList
   },
-  [SHOW_NOTE_LIST] (state) {
+  [types.SHOW_NOTE_LIST] (state) {
     state.showNoteList = true
   }
 }
