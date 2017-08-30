@@ -1,10 +1,11 @@
 <template>
-  <div class="m-list">
+  <div class="m-note-container">
     <p class="u-title">笔记</p>
     <p class="u-num">{{list.length}}条笔记</p>
-    <ul>
+    <ul class="m-item-list">
       <li class="m-item" v-for="item in list" :key="item.id" @click="renderNote(item.id)" :class="{'active': activeIndex === item.id}">
         <NoteItem :item="item"></NoteItem>
+        <div class="u-cover"></div>
       </li>
     </ul>
   </div>
@@ -38,7 +39,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.m-list {
+.m-note-container {
   height: 100%;
   width: 300px;
   border-right: 1px solid #ececec;
@@ -61,15 +62,32 @@ export default {
     padding: 0 0 5px 10px;
   }
 }
+.m-item-list {
+  border-top: 1px solid #ececec;
+}
 .m-item {
   box-sizing: border-box;
   text-align: left;
   height: 110px;
+  font-size: 0;
+  position: relative;
   &.active {
-    border: 3px solid #ececec;
+    .u-cover {
+      display: block;
+    }
     .u-link {
       border: none;
     }
+  }
+  .u-cover {
+    display: none;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #ececec;
   }
 }
 </style>
