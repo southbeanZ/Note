@@ -15,7 +15,6 @@ const state = {
 
 let getters = {
   starNotes: (state) => {
-    console.log(state)
     if (state.showStar) {
       return state.list.filter(item => item.star)
     } else {
