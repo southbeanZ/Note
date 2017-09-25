@@ -20,11 +20,15 @@ const mutations = {
     state.isNew = data.isNew
   },
   [types.ADD_NOTE] (state, data) {
-    data.id = state.list.length > 0 ? state.list[state.list.length - 1].id + 1 : 0
+    data.id = new Date().getTime()
     data.summary = data.content
     data.star = false
-    localStorage.setItem('notes' + data.id, JSON.stringify(data))
-    localStorage.setItem('notesNum', +localStorage.getItem('notesNum') + 1)
+    data.tagList = []
+    localStorage.setItem('notes_' + data.id, JSON.stringify(data))
+    let notes = JSON.parse(localStorage.getItem('notesNames')) || []
+    notes.push('notes_' + data.id)
+    console.log(notes)
+    localStorage.setItem('notesNames', JSON.stringify(notes))
     state.list = [...state.list, data]
   },
   [types.DELETE_NOTE] (state, id) {
@@ -32,18 +36,22 @@ const mutations = {
     //   return +ele.id === id
     // })
     // console.log(index)
-    localStorage.removeItem('notes' + id)
+    localStorage.removeItem('notes_' + id)
+    let notes = JSON.parse(localStorage.getItem('notesNames'))
+    notes.splice(notes.indexOf('notes_' + id), 1)
+    localStorage.setItem('notesNames', JSON.stringify(notes))
     state.list.splice(getIndex(state.list, id), 1)
     state.activeItem = null
   },
   [types.UPDATE_NOTE] (state, newData) {
     let _id = newData.id
     state.list[_id] = newData
-    localStorage.setItem('notes' + _id, JSON.stringify(newData))
+    localStorage.setItem('notes_' + _id, JSON.stringify(newData))
   },
   [types.STAR_NOTE] (state, id) {
     let index = getIndex(state.list, id)
     state.list[index].star = !state.list[index].star
+    localStorage.setItem('notes_' + id, JSON.stringify(state.list[index]))
   },
   [types.GET_NOTELIST] (state, data) {
     console.log('data:' + data)
@@ -55,10 +63,12 @@ const mutations = {
     // console.log(state)
   },
   [types.ADD_TAG] (state, data) {
-    let index = getIndex(state.list, state.activeItem.id)
-    state.list[index].tagList.push({
-      'name': data
-    })
+    let index = getIndex(state.list, state.activeItem.id),
+        tagList = state.list[index].tagList || []
+    tagList.push(data)
+    console.log(tagList)
+    state.list[index].tagList = [...new Set(tagList)]
+    localStorage.setItem('notes_' + state.activeItem.id, JSON.stringify(state.list[index]))
   },
   [types.SHOW_TAG_LIST] (state) {
     state.showNoteList = !state.showNoteList

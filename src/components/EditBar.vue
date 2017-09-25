@@ -6,6 +6,7 @@
     </div>
     <div class="u-btngroup u-btngroup-right">
       <a href="javascript:;" class="btn btn-add" @click="addNote" v-if="isNew">添加</a>
+      <a href="javascript:;" class="btn btn-add" @click="updateNote" v-else>保存</a>
     </div>
   </div>
 </template>
@@ -19,8 +20,8 @@ export default {
     starNote: function () {
       this.$emit('starNote')
     },
-    updatNote: function () {
-      this.$emit('updatNote')
+    updateNote: function () {
+      this.$emit('updateNote')
     },
     deleteNote: function () {
       this.$emit('deleteNote')

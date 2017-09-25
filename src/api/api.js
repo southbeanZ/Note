@@ -3,10 +3,9 @@
 export default {
   getNoteList (cb) {
     let notes = [],
-        num = 0
-    num = localStorage.getItem('notesNum')
-    for (let i = 0; i < num; i++) {
-      notes.push(JSON.parse(localStorage.getItem('notes' + i)))
+        notesNames = JSON.parse(localStorage.getItem('notesNames')) || []
+    for (let i = 0; i < notesNames.length; i++) {
+      notes.push(JSON.parse(localStorage.getItem(notesNames[i])))
     }
     setTimeout(() => cb(notes), 100)
     // setTimeout(() => cb(data.list), 100)

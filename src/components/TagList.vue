@@ -1,7 +1,7 @@
 <template>
   <div class="m-taglist">
     <a href="javascript:;" class="u-icon"></a>
-    <span class="u-tag" :key="id" v-for="(item, id) in list">{{item.name}}</span>
+    <span class="u-tag" :key="id" v-for="(item, id) in list">{{item}}</span>
     <input id="J_ip_tag" type="text" class="u-tag" v-model="newTag" placeholder="+" @blur="checkTag" @input="changeHandler">
   </div>
 </template>
