@@ -17,7 +17,8 @@ export default {
       default: function () {
         return {
           title: '',
-          content: ''
+          content: '',
+          tagList: []
         }
       },
       type: Object
@@ -33,14 +34,11 @@ export default {
   },
   methods: {
     addNote: function () {
-      let data = {},
-        _title = document.getElementsByClassName('J_title')[0].value,
-        _content = document.getElementsByClassName('J_content')[0].value
+      let data = this.data,
+        _title = data.title
       if (_title === '') {
         alert('请输入标题')
       } else {
-        data.title = _title
-        data.content = _content
         data.time = this.fDateFormater(new Date())
         // this.$emit('addNote', data)
         this.$store.commit('ADD_NOTE', data)

@@ -11,7 +11,8 @@ const mutations = {
     if (data.isNew) {
       state.activeItem = {
         title: '',
-        content: ''
+        content: '',
+        tagList: []
       }
     } else {
       let _data = state.list[getIndex(state.list, data.id)]
@@ -23,11 +24,9 @@ const mutations = {
     data.id = new Date().getTime()
     data.summary = data.content
     data.star = false
-    data.tagList = []
     localStorage.setItem('notes_' + data.id, JSON.stringify(data))
     let notes = JSON.parse(localStorage.getItem('notesNames')) || []
     notes.push('notes_' + data.id)
-    console.log(notes)
     localStorage.setItem('notesNames', JSON.stringify(notes))
     state.list = [...state.list, data]
   },
@@ -64,7 +63,15 @@ const mutations = {
   },
   [types.ADD_TAG] (state, data) {
     let index = getIndex(state.list, state.activeItem.id),
-        tagList = state.list[index].tagList || []
+        tagList = []
+    if (index === -1) {
+      tagList = state.activeItem.tagList || []
+      tagList.push(data)
+      console.log('cur:' + tagList)
+      state.activeItem.tagList = [...new Set(tagList)]
+      return
+    }
+    tagList = state.list[index].tagList || []
     tagList.push(data)
     console.log(tagList)
     state.list[index].tagList = [...new Set(tagList)]
