@@ -18,6 +18,7 @@ export default {
         return {
           title: '',
           content: '',
+          summary: '',
           tagList: []
         }
       },
